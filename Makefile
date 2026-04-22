@@ -425,7 +425,7 @@ init:
 
 SF := ___  ___\n/ __||  _|\n\__ \|  _|\n|___/|_|\n
 uncompressed: $(ROM)
-	@echo "$(GREEN)Calculating Rom Header Checksum... $(YELLOW)$<$(NO_COL)"
+	@echo "$(GREEN)Generating Rom Header Checksum... $(YELLOW)$<$(NO_COL)"
 	@$(PYTHON) $(COMPTOOL) -r $(ROM) .
 ifneq ($(COMPARE),0)
 	@md5sum --status -c $(TARGET).$(VERSION).$(REV).uncompressed.md5 && \

@@ -34,7 +34,7 @@
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_hud/func_800826E4.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_hud/func_80082EB0.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_hud/HUD_TeamShields_Draw.s")
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_hud/func_80083168.s")
 
@@ -98,7 +98,7 @@
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_hud/func_80087B9C.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_hud/func_80087CDC.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_hud/HUD_RadioCharacterName_Draw.s")
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_hud/func_80087F60.s")
 

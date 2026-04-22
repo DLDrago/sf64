@@ -5949,7 +5949,7 @@ void Map_BriefingRadio_Update(void) {
     if ((D_menu_801CF018 > 0) && (D_menu_801CF018 != 100)) {
         Map_BriefingRadio_Draw(gCurrentRadioPortrait);
         Map_BriefingRadio_Draw(D_menu_801AF420[!D_menu_801CD940]);
-        func_radio_800BB388();
+        Radio_TextBox_Draw();
     }
 }
 

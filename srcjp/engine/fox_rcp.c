@@ -1,6 +1,6 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_rcp/func_800B5DE0.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_rcp/RCP_SetupDL.s")
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_rcp/func_800B5E24.s")
 
@@ -30,7 +30,7 @@
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_rcp/func_800B6338.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_rcp/func_800B6368.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_rcp/RCP_SetupDL_36.s")
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_rcp/func_800B6398.s")
 
@@ -88,7 +88,7 @@
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_rcp/func_800B7470.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_rcp/func_800B74A0.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_rcp/RCP_SetupDL_76.s")
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_rcp/func_800B74D0.s")
 

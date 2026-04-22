@@ -59,7 +59,7 @@ void func_80016B70(void) {
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/audio/audio_general/func_800192DC.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/audio/audio_general/func_80019338.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/audio/audio_general/Audio_PlaySfx.s")
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/audio/audio_general/func_800193B0.s")
 
@@ -95,15 +95,15 @@ void func_80016B70(void) {
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/audio/audio_general/func_8001AC70.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/audio/audio_general/func_8001ADFC.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/audio/audio_general/Audio_PlayVoice.s")
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/audio/audio_general/func_8001AE20.s")
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/audio/audio_general/func_8001AE64.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/audio/audio_general/func_8001AF78.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/audio/audio_general/Audio_ClearVoice.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/audio/audio_general/func_8001AF98.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/audio/audio_general/Audio_GetCurrentVoice.s")
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/audio/audio_general/func_8001AFF4.s")
 

@@ -40,11 +40,11 @@
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_std_lib/func_80099C8C.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_std_lib/func_8009A00C.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_std_lib/Lib_TextureRect_CI8.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_std_lib/func_8009A368.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_std_lib/Lib_TextureRect_RGBA16.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_std_lib/func_8009A61C.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_std_lib/Lib_TextureRect_RGBA16_MirX.s")
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_std_lib/func_8009A8E4.s")
 
@@ -82,7 +82,7 @@
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_std_lib/func_8009DD68.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_std_lib/func_8009DF5C.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_std_lib/Graphics_DisplaySmallText.s")
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_std_lib/func_8009E148.s")
 

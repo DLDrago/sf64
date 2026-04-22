@@ -63,7 +63,7 @@ typedef enum RadioCharacterId {
 } RadioCharacterId;
 
 void Radio_PlayMessage(u16*, RadioCharacterId);
-void func_radio_800BB388(void);
+void Radio_TextBox_Draw(void);
 void Radio_Draw(void);
 
 typedef enum MsgCharCode {

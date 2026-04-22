@@ -2,15 +2,15 @@
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/sys/sys_matrix/func_80005860.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/sys/sys_matrix/func_800058E8.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/sys/sys_matrix/Matrix_Push.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/sys/sys_matrix/func_80005920.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/sys/sys_matrix/Matrix_Pop.s")
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/sys/sys_matrix/func_80005934.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/sys/sys_matrix/func_80005CE0.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/sys/sys_matrix/Matrix_Translate.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/sys/sys_matrix/func_80005E14.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/sys/sys_matrix/Matrix_Scale.s")
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/sys/sys_matrix/func_80005F24.s")
 
@@ -34,4 +34,4 @@
 
 #pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/sys/sys_matrix/func_8000701C.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/sys/sys_matrix/func_80007098.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/sys/sys_matrix/Matrix_SetGfxMtx.s")

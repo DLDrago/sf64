@@ -1,15 +1,37 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_radio/func_800B7770.s")
+extern u16** gRadioMsgList;
+extern s32 gRadioMsgListIndex;
+extern s32 gRadioPrintPosX;
+extern s32 gRadioPrintPosY;
+extern f32 gRadioTextBoxPosX;
+extern f32 gRadioTextBoxPosY;
+extern f32 gRadioTextBoxScaleX;
+extern f32 gRadioPortraitPosX;
+extern f32 gRadioPortraitPosY;
+extern f32 gRadioTextBoxScaleY;
+extern s32 gMsgCharIsPrinting;
+extern s32 gRadioMsgCharIndex;
+extern u16* gRadioMsg;
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_radio/func_800B77CC.s")
+bool Message_IsPrintingChar(u16* msgPtr, s32 charPos);
+void RCP_SetupDL_36(void);
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_radio/func_800B7818.s")
+void Radio_Hide(void) {
+    RCP_SetupDL_36();
+    if (gRadioTextBoxScaleY == 1.3f) {
+        gMsgCharIsPrinting = Message_IsPrintingChar(gRadioMsg, gRadioMsgCharIndex);
+    }
+}
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_radio/func_800B7AF8.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_radio/Radio_CheckMesgPriority.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_radio/func_800B8398.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_radio/Radio_PlayMessage.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_radio/func_800B85E0.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_radio/Radio_Portrait_Draw.s")
 
-#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_radio/func_800B9024.s")
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_radio/Radio_TextBox_Draw.s")
+
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_radio/Radio_Draw.s")
+
+#pragma GLOBAL_ASM("asm/jp/rev0/nonmatchings/engine/fox_radio/Radio_Draw_Alt.s")

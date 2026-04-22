@@ -31,14 +31,14 @@ f32 gRadioPortraitPosY;
 
 s32 gRadioMsgPri = 0;
 
-void func_radio_800BA760(void) {
+void Radio_Hide(void) {
     RCP_SetupDL_36();
     if (gRadioTextBoxScaleY == 1.3f) {
         gMsgCharIsPrinting = Message_IsPrintingChar(gRadioMsg, gRadioMsgCharIndex);
     }
 }
 
-s32 func_radio_800BA7BC(u16* msg, s32 priority) {
+s32 Radio_CheckMesgPriority(u16* msg, s32 priority) {
     if (priority == gRadioMsgPri) {
         return 0;
     }
@@ -91,7 +91,7 @@ void Radio_PlayMessage(u16* msg, RadioCharacterId character) {
         }
     }
 
-    if ((gRadioState != 0) && (func_radio_800BA7BC(msg, priority) == 1)) {
+    if ((gRadioState != 0) && (Radio_CheckMesgPriority(msg, priority) == 1)) {
         return;
     }
 
@@ -152,7 +152,7 @@ void Radio_PlayMessage(u16* msg, RadioCharacterId character) {
 s32 sRadioUseRedBox;
 
 void Radio_Portrait_Draw(void) {
-    static f32 D_800D4A74 = -1.0f;
+    static f32 sRadioPortraitScaleNeg = -1.0f;
     u16* radioPortraitTex;
     s32 mirror;
     s32 i;
@@ -418,12 +418,12 @@ void Radio_Portrait_Draw(void) {
     if ((radioPortraitTex != NULL) && (gRadioPortraitScaleY != 0.0f)) {
         temp_fa0 = (2.0f * gRadioPortraitScaleY) + gRadioPortraitPosY;
         if ((gRadioPortraitPosY + 20.0f) <= temp_fa0) {
-            D_800D4A74 = 1.0f;
+            sRadioPortraitScaleNeg = 1.0f;
         }
         if (temp_fa0 <= gRadioPortraitPosY) {
-            D_800D4A74 = -1.0f;
+            sRadioPortraitScaleNeg = -1.0f;
         }
-        sp38 = gRadioPortraitScaleY * 20.0f * D_800D4A74;
+        sp38 = gRadioPortraitScaleY * 20.0f * sRadioPortraitScaleNeg;
         RCP_SetupDL_76();
         gDPSetPrimColor(gMasterDisp++, 0x00, 0x00, 255, 255, 255, 255);
 
@@ -449,7 +449,7 @@ void Radio_Portrait_Draw(void) {
     }
 }
 
-void func_radio_800BB388(void) {
+void Radio_TextBox_Draw(void) {
     static f32 D_800D4A78 = -1.0f;
     f32 temp_fa0;
     u8* texture;
@@ -693,7 +693,7 @@ void Radio_Draw(void) {
 
     if (((gRadioState > 0) && (gRadioState != 100)) && !gHideRadio) {
         Radio_Portrait_Draw();
-        func_radio_800BB388();
+        Radio_TextBox_Draw();
 
         radioCharId = (s32) gRadioMsgRadioId;
 
@@ -775,12 +775,13 @@ void Radio_Draw(void) {
     }
 
     if (gHideRadio == true) {
-        func_radio_800BA760();
+        Radio_Hide();
     }
 }
 
-// Unused in VERSION_US and absent in VERSION_EU, probably a leftover from VERSION_JP ?
-void func_radio_800BC040(void) {
+// Seems to be an older/alternate version of Radio_Draw,
+// Unused in VERSION_US and VERSION_JP, absent in VERSION_EU
+void Radio_Draw_Alt(void) {
     if (gPlayState != PLAY_PAUSE) {
         if (gRadioStateTimer > 0) {
             gRadioStateTimer--;
@@ -892,7 +893,7 @@ void func_radio_800BC040(void) {
 
         if ((gRadioState > 0) && (gRadioState != 100)) {
             Radio_Portrait_Draw();
-            func_radio_800BB388();
+            Radio_TextBox_Draw();
             if (((s32) gRadioMsgRadioId == RCID_FALCO) || ((s32) gRadioMsgRadioId == RCID_SLIPPY) ||
                 ((s32) gRadioMsgRadioId == RCID_PEPPY)) {
                 Matrix_Push(&gGfxMatrix);

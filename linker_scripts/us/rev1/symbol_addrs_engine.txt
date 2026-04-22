@@ -129,11 +129,11 @@ sUnlockOnFoot = 0x80178760;
 
 gRadioMsgPri = 0x800D4A70;
 
-func_radio_800BA760 = 0x800BA760;
-func_radio_800BA7BC = 0x800BA7BC;
+Radio_Hide = 0x800BA760;
+Radio_CheckMesgPriority = 0x800BA7BC;
 Radio_PlayMessage = 0x800BA808;
 func_radio_800BAAE8 = 0x800BAAE8;
-func_radio_800BB388 = 0x800BB388;
+Radio_TextBox_Draw = 0x800BB388;
 Radio_Draw = 0x800BB5D0;
 
 // fox_message

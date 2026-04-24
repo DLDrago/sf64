@@ -6134,7 +6134,14 @@ void Venom1_LevelStart2(Player* player) {
                 gPathTexScroll = 0;
                 gLevelStartStatusScreenTimer = 50;
                 player->state = PLAYERSTATE_ACTIVE;
+#ifdef VERSION_JP
+                //! @bug:
+                // The player baseSpeed is hardcoded to 30.0f,causing the Arwing to be
+                // slower than it should if the initial cutscene wasn't skipped in JP 1.0
+                player->baseSpeed = 30.0f;
+#else
                 player->baseSpeed = gArwingSpeed;
+#endif
                 player->csState = 0;
                 player->csTimer = 0;
                 player->unk_014 = 0.0f;

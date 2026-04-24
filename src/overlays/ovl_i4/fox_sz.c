@@ -714,6 +714,7 @@ void SectorZ_CsObjectInit(void) {
     }
 }
 
+// Great Fox during the initial cutscene
 void SectorZ_CsGreatFoxInit(void) {
     ActorCutscene* greatFox = &gActors[SZ_GREAT_FOX];
 
@@ -763,6 +764,7 @@ Vec3f sTeamCsOffsetPos[] = {
     { 200.0f, 0.0f, 0.0f }, { 200.0f, 0.0f, 0.0f }, { 200.0f, 0.0f, 0.0f }, { 200.0f, 0.0f, 0.0f }
 };
 
+// Team members during the initial cutscene, relative to great fox position.
 void SectorZ_CsTeamInit(ActorCutscene* this, s32 index) {
     ActorCutscene* greatFox = &gActors[SZ_GREAT_FOX];
 
@@ -790,6 +792,8 @@ Vec3f sTeamSetupOffsetPos[] = {
     { 0.0f, 20000.0f, 0.0f }, { -1000.0f, 100.0f, 500.0f }, { -1300.0f, -50.0f, 0.0f }, { -1600.0f, 50.0f, -500.0f }
 };
 
+// Team members setup after the initial cutscene.
+// Requirement: Initial cutscene wasn't skipped.
 void SectorZ_TeamSetup(void) {
     TeamId i;
     ActorAllRange* team;
@@ -816,6 +820,14 @@ void SectorZ_TeamSetup(void) {
 
                 AUDIO_PLAY_SFX(NA_SE_ARWING_ENGINE_FG, team->sfxSource, 4);
 
+                //! @bug:
+                /*
+                 * team->info.bonus = 0; is missing
+                 * the default bonus type for OBJ_ACTOR_ALLRANGE is 1,
+                 * causing your teammates to be subjects of charge shot bonus points
+                 * if the initial cutscene wasn't skipped,
+                 * otherwise, bonus is correctly set to 0 by ActorAllRange_SpawnTeam.
+                 */
                 team->info.hitbox = SEGMENTED_TO_VIRTUAL(gTeamHitbox);
                 team->info.unk_16 = 0;
                 team->info.targetOffset = 0.0f;
@@ -1072,11 +1084,11 @@ void SectorZ_LevelStart(Player* player) {
     Math_SmoothStepToF(&player->cam.at.z, gCsCamAtZ, D_ctx_80177A48[0], 50000.0f, 0);
 }
 
-f32 sCsTeamXpos[] = { -300.0f, 350.0f, -50.0f, 800.0f };
+f32 sCsLevelCompleteTeamXpos[] = { -300.0f, 350.0f, -50.0f, 800.0f };
 
-f32 sCsTeamYpos[] = { 0.0f, -30.0f, -90.0f, -550.0f };
+f32 sCsLevelCompleteTeamYpos[] = { 0.0f, -30.0f, -90.0f, -550.0f };
 
-f32 sCsTeamZpos[] = { -200.0f, -250.0f, -500.0f, 5000.0f };
+f32 sCsLevelCompleteTeamZpos[] = { -200.0f, -250.0f, -500.0f, 5000.0f };
 
 void SectorZ_CsLevelCompleteTeamInit(ActorCutscene* this, s32 index) {
     f32 direction;
@@ -1090,9 +1102,9 @@ void SectorZ_CsLevelCompleteTeamInit(ActorCutscene* this, s32 index) {
     this->obj.status = OBJ_INIT;
     this->obj.id = OBJ_ACTOR_CUTSCENE;
 
-    this->obj.pos.x = sCsTeamXpos[index] * direction;
-    this->obj.pos.y = sCsTeamYpos[index];
-    this->obj.pos.z = sCsTeamZpos[index];
+    this->obj.pos.x = sCsLevelCompleteTeamXpos[index] * direction;
+    this->obj.pos.y = sCsLevelCompleteTeamYpos[index];
+    this->obj.pos.z = sCsLevelCompleteTeamZpos[index];
 
     this->fwork[0] = gPlayer[0].baseSpeed;
     this->orient.y = gPlayer[0].rot.y;

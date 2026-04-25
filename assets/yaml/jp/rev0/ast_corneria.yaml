@@ -280,7 +280,7 @@ aCoGaruda1Anim:
   { type: SF64:ANIM, offset: 0x602991C, symbol: aCoGaruda1Anim }
   
 aCoGarudaSkel: 
-  { type: SF64:SKELETON, offset: 0x6029A44, symbol: aCoGarudaSkel }
+  { type: SF64:SKELETON, offset: 0x6029A48, symbol: aCoGarudaSkel }
 
 aCoGaruda3Anim:
   { type: SF64:ANIM, offset: 0x602A520, symbol: aCoGaruda3Anim }

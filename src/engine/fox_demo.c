@@ -2440,13 +2440,13 @@ void ActorCutscene_Update(ActorCutscene* this) {
     }
 }
 
-Vec3f sGreatFoxLightPos2[] = {
+Vec3f sGreatFoxLightPos3[] = {
     { -1373.0, 484.0, -374.0 },
     { 1373.0, 484.0, -374.0 },
     { -1373.0, -704.0, -374.0 },
     { 1373.0, -704.0, -374.0 },
 };
-Vec3f sGreatFoxLightPos[] = {
+Vec3f sGreatFoxLightPos1[] = {
     { 0.0, 40.0, -2278.0 },
     { 295.0, -92.0, -1301.0 },
     { -295.0, -92.0, -1301.0 },
@@ -2456,14 +2456,14 @@ Vec3f sCsSyShipPos[8] = {
     { -170.0f, -140.0f, -380.0f }, { 140.0f, 40.0f, -250.0f },   { -150.0f, 40.0f, -250.0f },
     { 140.0f, 0.0f, -250.0f },     { -150.0f, 0.0f, -250.0f },
 };
-f32 D_demo_800CA170[] = {
+f32 sGreatFoxLightScale1[] = {
     0.15f, 0.45f, 0.75f, 1.3f, 0.75f, 0.45f, 0.15f, 0.0f,
 };
 f32 sGreatFoxLightScale2[] = { 5.0f, 5.2f };
 f32 sMeGreatFoxLightScale[] = {
     0.5f, 1.5f, 2.5f, 1.5f, 0.5f, 0.2f, 0.2f,
 };
-f32 D_demo_800CA1B4[] = {
+f32 sGreatFoxLightPos2[] = {
     -30.0f, -60.0f, -90.0f, -120.0f, -150.0f, -180.0f, -200.0, -210.0,
 };
 f32 sGreatFoxLightScale3[] = {
@@ -2713,7 +2713,6 @@ void ActorCutscene_Draw(ActorCutscene* this) {
 
             if (gPlayer[0].state == PLAYERSTATE_LEVEL_COMPLETE) {
                 Matrix_Scale(gGfxMatrix, 0.075f, 0.075f, 0.075f, MTXF_APPLY);
-                break;
             }
             break;
 
@@ -2921,19 +2920,19 @@ void Cutscene_DrawGreatFox(void) {
         RCP_SetupDL_49();
         gDPSetPrimColor(gMasterDisp++, 0, 0, 255, 255, 255, 255);
 
-        for (i = 0, greatFoxLightPos = sGreatFoxLightPos2; i < ARRAY_COUNT(greatFoxLightScale);
+        for (i = 0, greatFoxLightPos = sGreatFoxLightPos3; i < ARRAY_COUNT(greatFoxLightScale);
              i++, greatFoxLightPos++) {
             if ((i != 1) || gGreatFoxIntact) {
                 greatFoxLightScale[i] = 0.0f;
 
                 if (i < 2) {
                     if ((gGameFrameCount & ((64 - 1) & ~(8 - 1))) == 0) {
-                        greatFoxLightScale[i] = D_demo_800CA170[gGameFrameCount % 8U];
+                        greatFoxLightScale[i] = sGreatFoxLightScale1[gGameFrameCount % 8U];
                     }
                     gDPSetEnvColor(gMasterDisp++, 255, 32, 32, 128);
                 } else {
                     if (((gGameFrameCount + 32) & 0x38) == 0) {
-                        greatFoxLightScale[i] = D_demo_800CA170[gGameFrameCount % 8U];
+                        greatFoxLightScale[i] = sGreatFoxLightScale1[gGameFrameCount % 8U];
                     }
                     gDPSetEnvColor(gMasterDisp++, 32, 32, 255, 128);
                 }
@@ -2950,7 +2949,8 @@ void Cutscene_DrawGreatFox(void) {
         gDPSetPrimColor(gMasterDisp++, 0, 0, 255, 255, 255, 48);
         gDPSetEnvColor(gMasterDisp++, 255, 255, 0, 48);
 
-        for (i = 0, greatFoxLightPos = sGreatFoxLightPos; i < 3; i++, greatFoxLightPos++) {
+        for (i = 0, greatFoxLightPos = sGreatFoxLightPos1; i < ARRAY_COUNT(sGreatFoxLightPos1);
+             i++, greatFoxLightPos++) {
             greatFoxLightScale[i] = sGreatFoxLightScale2[gGameFrameCount % 2U];
             Matrix_Push(&gGfxMatrix);
             Matrix_Translate(gGfxMatrix, greatFoxLightPos->x, greatFoxLightPos->y, greatFoxLightPos->z, MTXF_APPLY);
@@ -2960,7 +2960,7 @@ void Cutscene_DrawGreatFox(void) {
 
             for (j = 0; j < 4; j++) {
                 Matrix_Push(&gGfxMatrix);
-                Matrix_Translate(gGfxMatrix, 0.0f, 0.0f, D_demo_800CA1B4[2 * j], MTXF_APPLY);
+                Matrix_Translate(gGfxMatrix, 0.0f, 0.0f, sGreatFoxLightPos2[2 * j], MTXF_APPLY);
                 Matrix_Scale(gGfxMatrix, sGreatFoxLightScale3[2 * j], sGreatFoxLightScale3[2 * j], 1.0f, MTXF_APPLY);
                 Matrix_SetGfxMtx(&gMasterDisp);
                 gSPDisplayList(gMasterDisp++, dList);

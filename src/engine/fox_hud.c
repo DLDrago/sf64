@@ -6136,7 +6136,7 @@ void Venom1_LevelStart2(Player* player) {
                 player->state = PLAYERSTATE_ACTIVE;
 #ifdef VERSION_JP
                 //! @bug:
-                // The player baseSpeed is hardcoded to 30.0f,causing the Arwing to be
+                // The player baseSpeed is hardcoded to 30.0f, causing the Arwing to be
                 // slower than it should if the initial cutscene wasn't skipped in JP 1.0
                 player->baseSpeed = 30.0f;
 #else

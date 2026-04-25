@@ -795,24 +795,24 @@ Vec3f sTeamSetupOffsetPos[] = {
 // Team members setup after the initial cutscene.
 // Requirement: Initial cutscene wasn't skipped.
 void SectorZ_TeamSetup(void) {
-    TeamId i;
+    TeamId teamIdx;
     ActorAllRange* team;
 
-    for (i = TEAM_ID_FOX, team = &gActors[0]; i <= TEAM_ID_PEPPY; i++, team++) {
-        if ((i <= TEAM_ID_FOX) || (gTeamShields[i] > 0)) {
+    for (teamIdx = TEAM_ID_FOX, team = &gActors[0]; teamIdx <= TEAM_ID_PEPPY; teamIdx++, team++) {
+        if ((teamIdx <= TEAM_ID_FOX) || (gTeamShields[teamIdx] > 0)) {
             Actor_Initialize(team);
             team->obj.status = OBJ_ACTIVE;
             team->obj.id = OBJ_ACTOR_ALLRANGE;
 
             Object_SetInfo(&team->info, team->obj.id);
 
-            if (i == TEAM_ID_FOX) {
+            if (teamIdx == TEAM_ID_FOX) {
                 team->aiType = AI360_EVENT_HANDLER;
             } else {
-                team->obj.pos.x = gPlayer[0].pos.x + sTeamSetupOffsetPos[i].x;
-                team->obj.pos.y = gPlayer[0].pos.y + sTeamSetupOffsetPos[i].y;
-                team->obj.pos.z = gPlayer[0].pos.z + sTeamSetupOffsetPos[i].z;
-                team->aiType = i;
+                team->obj.pos.x = gPlayer[0].pos.x + sTeamSetupOffsetPos[teamIdx].x;
+                team->obj.pos.y = gPlayer[0].pos.y + sTeamSetupOffsetPos[teamIdx].y;
+                team->obj.pos.z = gPlayer[0].pos.z + sTeamSetupOffsetPos[teamIdx].z;
+                team->aiType = teamIdx;
                 team->state = 2;
                 team->orient.y = 270.0f;
                 team->health = 255;
@@ -823,7 +823,7 @@ void SectorZ_TeamSetup(void) {
                 //! @bug:
                 /*
                  * team->info.bonus = 0; is missing
-                 * the default bonus type for OBJ_ACTOR_ALLRANGE is 1,
+                 * the default bonus amount for OBJ_ACTOR_ALLRANGE is 1,
                  * causing your teammates to be subjects of charge shot bonus points
                  * if the initial cutscene wasn't skipped,
                  * otherwise, bonus is correctly set to 0 by ActorAllRange_SpawnTeam.

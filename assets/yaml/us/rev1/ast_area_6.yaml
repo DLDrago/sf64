@@ -38,8 +38,8 @@ aA6BossPortrait2Tex:
 aA6TurretModeRadarTex: # assumption
   { type: TEXTURE, ctype: u8, format: CI4, width: 48, height: 44, offset: 0x06006620, symbol: aA6TurretModeRadarTex, tlut: 0x06006A40 }
 
-aA6TurretModeRadarMarkTex: # assumption
-  { type: TEXTURE, ctype: u16, format: TLUT, colors: 4, offset: 0x6006A40, symbol: aA6TurretModeRadarMarkTex}
+aA6TurretModeRadarMarkTLUT: # assumption
+  { type: TEXTURE, ctype: u16, format: TLUT, colors: 4, offset: 0x6006A40, symbol: aA6TurretModeRadarMarkTLUT}
 
 aA6GorgonSkelTex1:
   { type: TEXTURE, ctype: u16, format: RGBA16, width: 16, height: 16, offset: 0x06008918, symbol: aA6GorgonSkelTex1 }

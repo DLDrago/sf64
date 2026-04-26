@@ -570,7 +570,7 @@ void ActorDebris_Update(ActorDebris* this) {
             this->obj.rot.z += this->fwork[1];
             break;
 
-        case ACTORDEBRIS_46:
+        case ACTORDEBRIS_TI_RASCO:
             this->obj.rot.x += this->fwork[0];
             this->obj.rot.y += this->fwork[1];
             this->obj.rot.z += this->fwork[2];
@@ -4054,9 +4054,9 @@ void ActorEvent_Draw(ActorEvent* this) {
                     break;
 
                 case EVID_TI_BOMBER:
-                    Animation_GetFrameData(&aTiBomberAnim, this->animFrame, frameTable);
+                    Animation_GetFrameData(&aTi1BomberAnim, this->animFrame, frameTable);
                     frameTable[2].z += this->fwork[EVA_FWORK_15];
-                    Animation_DrawSkeleton(1, aTiBomberSkel, frameTable, NULL, NULL, this, &gIdentityMatrix);
+                    Animation_DrawSkeleton(1, aTi1BomberSkel, frameTable, NULL, NULL, this, &gIdentityMatrix);
                     break;
 
                 case EVID_SX_WARP_GATE:

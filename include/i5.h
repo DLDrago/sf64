@@ -8,8 +8,8 @@
 #include "sf64mesg.h"
 
 
-extern Gfx* D_TI_801B7584[];
-extern Gfx* D_TI_801B7608[];
+extern Gfx* gTiRascoDebrisDLs[];
+extern Gfx* gTiDesertCrawlerDebrisDLs[];
 extern Gfx* D_TI_801B769C[];
 extern f32 aTiGorasHitbox[];
 extern u8 D_MA_801BA1E8;

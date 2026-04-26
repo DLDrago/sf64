@@ -440,9 +440,9 @@ void Titania_TiFekuda_Draw(TiFekuda* this) {
 
 f32 sTiBoulderHitbox[7] = { 1.0f, 0.0f, 25.0f, 0.0f, 12.0f, 0.0f, 12.0f };
 
-Gfx* D_TI_801B7584[10] = {
-    D_TI1_700DDF0, D_TI1_700D9B0, D_TI1_700DF70, D_TI1_700DC50, D_TI1_700DED0,
-    D_TI1_700DAD0, D_TI1_700DBB0, D_TI1_700E030, D_TI1_700D880, D_TI1_700D740,
+Gfx* gTiRascoDebrisDLs[10] = {
+    aTi1RascoSkelLimb1DL, aTi1RascoSkelLimb2DL, aTi1RascoSkelLimb3DL,  aTi1RascoSkelLimb4DL,  aTi1RascoSkelLimb5DL,
+    aTi1RascoSkelLimb6DL, aTi1RascoSkelLimb7DL, aTi1RascoSkelLimb10DL, aTi1RascoSkelLimb12DL, aTi1RascoSkelLimb13DL,
 };
 
 void Titania_TiBoulder_Setup(TiBoulder* this, f32 xPos, f32 yPos, f32 zPos, f32 xVel, f32 yVel, f32 zVel) {
@@ -596,7 +596,7 @@ void Titania_TiBoulder_Draw(TiBoulder* this) {
         Matrix_Scale(gGfxMatrix, this->scale, this->scale, this->scale, MTXF_APPLY);
         Matrix_SetGfxMtx(&gMasterDisp);
     }
-    gSPDisplayList(gMasterDisp++, aTiBoulderDL);
+    gSPDisplayList(gMasterDisp++, aTi1BoulderDL);
 }
 
 void Titania_TiLandmine_Update(TiLandmine* this) {
@@ -851,7 +851,7 @@ void Titania_TiRasco_Update(TiRasco* this) {
                 sp38->obj.pos.z = this->obj.pos.z + dest.z;
             }
 
-            if (++this->animFrame >= Animation_GetFrameCount(&aTiRascoAnim)) {
+            if (++this->animFrame >= Animation_GetFrameCount(&aTi1RascoAnim)) {
                 this->state++;
             }
             break;
@@ -862,8 +862,8 @@ void Titania_TiRasco_Update(TiRasco* this) {
 
     if (this->health == 0) {
         this->obj.status = OBJ_DYING;
-        Animation_GetFrameData(&aTiRascoAnim, this->animFrame, this->vwork);
-        Animation_DrawSkeleton(0, aTiRascoSkel, this->vwork, Titania_8018AFD4, Titania_8018B1B4, this,
+        Animation_GetFrameData(&aTi1RascoAnim, this->animFrame, this->vwork);
+        Animation_DrawSkeleton(0, aTi1RascoSkel, this->vwork, Titania_8018AFD4, Titania_8018B1B4, this,
                                &gIdentityMatrix);
         Effect_FireSmoke1_Spawn3(this->obj.pos.x, this->obj.pos.y, this->obj.pos.z, 10.0f);
         this->lockOnTimers[TEAM_ID_FOX] = 0;
@@ -872,9 +872,9 @@ void Titania_TiRasco_Update(TiRasco* this) {
 }
 
 void Titania_TiRasco_Draw(TiRasco* this) {
-    Animation_GetFrameData(&aTiRascoAnim, this->animFrame, this->vwork);
-    Animation_DrawSkeleton(0, aTiRascoSkel, this->vwork, Titania_TiRasco_OverrideLimbDraw, Titania_TiRasco_PostLimbDraw,
-                           this, &gIdentityMatrix);
+    Animation_GetFrameData(&aTi1RascoAnim, this->animFrame, this->vwork);
+    Animation_DrawSkeleton(0, aTi1RascoSkel, this->vwork, Titania_TiRasco_OverrideLimbDraw,
+                           Titania_TiRasco_PostLimbDraw, this, &gIdentityMatrix);
 }
 
 #include "actordebris.h"
@@ -893,7 +893,7 @@ void Titania_TiRasco_Dying(TiRasco* this) {
         actorPtr = Game_SpawnActor(OBJ_ACTOR_DEBRIS);
         if (actorPtr != NULL) {
             actorPtr->obj.status = OBJ_ACTIVE;
-            actorPtr->state = ACTORDEBRIS_46;
+            actorPtr->state = ACTORDEBRIS_TI_RASCO;
             actorPtr->work_048 = i;
             Matrix_MultVec3f(gCalcMatrix, &var_s1->pos, &sp70);
             actorPtr->obj.pos.x = this->obj.pos.x + sp70.x;
@@ -1045,9 +1045,11 @@ s32 D_i5_801B75E4[3][3] = {
     { 0, 0, 0 },
 };
 
-Gfx* D_TI_801B7608[10] = {
-    D_TI1_7005280, D_TI1_7003C50, D_TI1_7003E30, D_TI1_7004370, D_TI1_7004560,
-    D_TI1_7003A90, D_TI1_7005420, D_TI1_7003FC0, D_TI1_7002930, D_TI1_7002490,
+Gfx* gTiDesertCrawlerDebrisDLs[10] = {
+    aTi1DesertCrawlerSkelLimb1DL, aTi1DesertCrawlerSkelLimb2DL, aTi1DesertCrawlerSkelLimb3DL,
+    aTi1DesertCrawlerSkelLimb4DL, aTi1DesertCrawlerSkelLimb5DL, aTi1DesertCrawlerSkelLimb6DL,
+    aTi1DesertCrawlerSkelLimb7DL, aTi1DesertCrawlerSkelLimb8DL, aTi1DesertCrawlerSkelLimb13DL,
+    aTi1DesertCrawlerHeadCoverDL,
 };
 
 void Titania_TiBomb_Draw(TiBomb* this) {
@@ -1146,7 +1148,7 @@ void Titania_TiDesertCrawler_PostLimbDraw(s32 limbIndex, Vec3f* rot, void* thisx
     TiDesertCrawler* this = (TiDesertCrawler*) thisx;
 
     if ((limbIndex == 13) && !(D_i5_801BD738[this->iwork[0]][8].unk_18 & 1)) {
-        gSPDisplayList(gMasterDisp++, D_TI1_7002490);
+        gSPDisplayList(gMasterDisp++, aTi1DesertCrawlerHeadCoverDL);
     }
 }
 
@@ -1346,7 +1348,7 @@ void Titania_TiDesertCrawler_Update(TiDesertCrawler* this) {
             this->drawShadow = true;
             this->vel.y = 20.0f;
             this->vel.z = -70.0f;
-            Animation_GetFrameData(&D_TI1_700733C, 0, this->vwork);
+            Animation_GetFrameData(&aTi1DesertCrawlerAnim1, 0, this->vwork);
             Animation_DrawSkeleton(1, aTi1DesertCrawlerSkel, this->vwork, Titania_8018C118, Titania_8018C3D8, this,
                                    &gIdentityMatrix);
             this->state = 1;
@@ -1357,7 +1359,7 @@ void Titania_TiDesertCrawler_Update(TiDesertCrawler* this) {
             this->fwork[0] = sp9C;
             this->fwork[1] = spA0;
             this->fwork[2] = sp98;
-            Animation_GetFrameData(&D_TI1_700733C, 0, spA4);
+            Animation_GetFrameData(&aTi1DesertCrawlerAnim1, 0, spA4);
             Math_SmoothStepToVec3fArray(spA4, this->vwork, 1, 15, 0.2f, 10.0f, 0.01f);
             Animation_DrawSkeleton(1, aTi1DesertCrawlerSkel, this->vwork, Titania_8018C118, Titania_8018C3D8, this,
                                    &gIdentityMatrix);
@@ -1415,7 +1417,7 @@ void Titania_TiDesertCrawler_Update(TiDesertCrawler* this) {
             this->obj.pos.y = this->fwork[0] = this->fwork[16];
             this->fwork[1] = this->orient.x;
             this->fwork[2] = this->orient.z;
-            Animation_GetFrameData(&D_TI1_7007234, 0, spA4);
+            Animation_GetFrameData(&aTi1DesertCrawlerAnim2, 0, spA4);
             Math_SmoothStepToVec3fArray(spA4, this->vwork, 1, 15, 0.5f, 7.0f, 0.1f);
             temp_fs0 = this->vwork[0].y;
             this->vwork[0].y += this->fwork[26];
@@ -1435,7 +1437,7 @@ void Titania_TiDesertCrawler_Update(TiDesertCrawler* this) {
             if (this->timer_0BC == 0) {
                 this->state = 4;
             }
-            Animation_GetFrameData(&D_TI1_70067C4, this->animFrame, spA4);
+            Animation_GetFrameData(&aTi1DesertCrawlerAnim3, this->animFrame, spA4);
             Math_SmoothStepToVec3fArray(spA4, this->vwork, 1, 15, 0.1f, 3.0f, 0.01f);
             temp_fs0 = this->vwork[0].y;
             this->vwork[0].y += this->fwork[26];
@@ -1468,7 +1470,7 @@ void Titania_TiDesertCrawler_Update(TiDesertCrawler* this) {
                 }
                 Math_SmoothStepToF(&this->fwork[15], 1.0f, 0.7f, 0.1f, 0.01f);
                 this->animFrame++;
-                if (this->animFrame >= Animation_GetFrameCount(&D_TI1_70067C4)) {
+                if (this->animFrame >= Animation_GetFrameCount(&aTi1DesertCrawlerAnim3)) {
                     this->animFrame = 0;
                 }
                 if ((this->fwork[4] > 0.0f) || (this->fwork[7] > 0.0f)) {
@@ -1481,7 +1483,7 @@ void Titania_TiDesertCrawler_Update(TiDesertCrawler* this) {
                 Math_SmoothStepToF(&this->fwork[15], 0.0f, 1.0f, 0.2f, 0.01f);
                 Math_SmoothStepToF(&this->fwork[24], 0.0f, 1.0f, 0.1f, 0.01f);
                 this->fwork[23] += this->fwork[24];
-                if (Animation_GetFrameCount(&D_TI1_70067C4) <= this->fwork[23]) {
+                if (Animation_GetFrameCount(&aTi1DesertCrawlerAnim3) <= this->fwork[23]) {
                     this->fwork[23] = 0.0f;
                 }
                 this->animFrame = this->fwork[23];
@@ -1490,7 +1492,7 @@ void Titania_TiDesertCrawler_Update(TiDesertCrawler* this) {
                 }
             }
 
-            Animation_GetFrameData(&D_TI1_70067C4, this->animFrame, spA4);
+            Animation_GetFrameData(&aTi1DesertCrawlerAnim3, this->animFrame, spA4);
             Math_SmoothStepToVec3fArray(spA4, this->vwork, 1, 15, this->fwork[15], 360.0f, 0.01f);
             temp_fs0 = this->vwork[0].y;
             this->vwork[0].y += this->fwork[26];
@@ -1511,7 +1513,7 @@ void Titania_TiDesertCrawler_Update(TiDesertCrawler* this) {
 
         case 5:
             Math_SmoothStepToF(&this->fwork[15], 1.0f, 1.0f, 0.015f, 0.01f);
-            Animation_GetFrameData(&D_TI1_7007130, this->animFrame, spA4);
+            Animation_GetFrameData(&aTi1DesertCrawlerAnim4, this->animFrame, spA4);
             Math_SmoothStepToVec3fArray(spA4, this->vwork, 1, 15, this->fwork[15], 360.0f, 0.01f);
             Math_SmoothStepToF(&this->fwork[26], -40.0f, this->fwork[15], 500.0f, 0.01f);
             temp_fs0 = this->vwork[0].y;
@@ -1520,7 +1522,7 @@ void Titania_TiDesertCrawler_Update(TiDesertCrawler* this) {
                                    &gIdentityMatrix);
             this->vwork[0].y = temp_fs0;
             this->animFrame++;
-            if (this->animFrame >= Animation_GetFrameCount(&D_TI1_7007130)) {
+            if (this->animFrame >= Animation_GetFrameCount(&aTi1DesertCrawlerAnim4)) {
                 this->animFrame = 0;
             }
             if (this->timer_0BC == 0) {
@@ -1536,7 +1538,7 @@ void Titania_TiDesertCrawler_Update(TiDesertCrawler* this) {
             }
             this->iwork[2] = 1;
             Math_SmoothStepToF(&this->fwork[15], 1.0f, 1.0f, 0.005f, 0.01f);
-            Animation_GetFrameData(&D_TI1_7006F74, this->animFrame, spA4);
+            Animation_GetFrameData(&aTi1DesertCrawlerAnim5, this->animFrame, spA4);
             Math_SmoothStepToVec3fArray(spA4, this->vwork, 1, 15, this->fwork[15], 360.0f, 0.01f);
             temp_fs0 = this->vwork[0].y;
             this->vwork[0].y += this->fwork[26];
@@ -1581,7 +1583,7 @@ void Titania_TiDesertCrawler_Update(TiDesertCrawler* this) {
                                          this->obj.pos.z + sp158.z, 1.5f);
             }
 
-            if (this->animFrame < (Animation_GetFrameCount(&D_TI1_7006F74) - 1)) {
+            if (this->animFrame < (Animation_GetFrameCount(&aTi1DesertCrawlerAnim5) - 1)) {
                 this->animFrame++;
             } else {
                 Titania_8018C72C(this);
@@ -1589,7 +1591,7 @@ void Titania_TiDesertCrawler_Update(TiDesertCrawler* this) {
             break;
 
         case 7:
-            Animation_GetFrameData(&D_TI1_7006F74, this->animFrame, spA4);
+            Animation_GetFrameData(&aTi1DesertCrawlerAnim5, this->animFrame, spA4);
             Math_SmoothStepToVec3fArray(spA4, this->vwork, 1, 15, this->fwork[15], 360.0f, 0.01f);
             break;
 
@@ -1760,7 +1762,7 @@ void Titania_TiDelphor_Update(TiDelphor* this) {
 }
 
 void Titania_TiDelphor_Draw(TiDelphor* this) {
-    gSPDisplayList(gMasterDisp++, aTiDelphorDL);
+    gSPDisplayList(gMasterDisp++, aTi1DelphorDL);
 }
 
 void Titania_TiDelphorHead_Init(TiDelphorHead* this) {
@@ -2005,8 +2007,8 @@ void Titania_TiDelphorHead_Update(TiDelphorHead* this) {
     }
 }
 
-void Titania_TiDelphorHead_Draw(Actor* this) {
-    gSPDisplayList(gMasterDisp++, D_TI1_7008930);
+void Titania_TiDelphorHead_Draw(TiDelphorHead* this) {
+    gSPDisplayList(gMasterDisp++, aTi1DelphorHeadDL);
     if ((this->timer_0C6 % 2) == 0) {
         RCP_SetupDL(&gMasterDisp, SETUPDL_34);
         gDPSetPrimColor(gMasterDisp++, 0x00, 0x00, 220, 220, 220, 255);
@@ -2014,7 +2016,7 @@ void Titania_TiDelphorHead_Draw(Actor* this) {
         RCP_SetupDL(&gMasterDisp, SETUPDL_22);
         gDPSetPrimColor(gMasterDisp++, 0x00, 0x00, 0, 0, 0, 255);
     }
-    gSPDisplayList(gMasterDisp++, D_TI1_7009510);
+    gSPDisplayList(gMasterDisp++, aTi1DelphorHeadCoverDL);
 }
 
 void Titania_TiCactus_Init(TiCactus* this) {
@@ -2187,9 +2189,9 @@ void Titania_TiPillar_Draw(TiPillar* this) {
     switch (this->unk_44) {
         case 0:
             if (this->unk_44 == 0) {
-                gSPDisplayList(gMasterDisp++, D_TI1_7002270);
+                gSPDisplayList(gMasterDisp++, aTi1Pillar1DL);
             } else {
-                gSPDisplayList(gMasterDisp++, D_TI1_7000A80);
+                gSPDisplayList(gMasterDisp++, aTi1Pillar2DL);
             }
             break;
 
@@ -2206,9 +2208,9 @@ void Titania_TiPillar_Draw(TiPillar* this) {
             }
 
             if (this->unk_44 == 0) { // Can never be true, this condition is never going to pass.
-                gSPDisplayList(gMasterDisp++, D_TI1_7002270);
+                gSPDisplayList(gMasterDisp++, aTi1Pillar1DL);
             } else {
-                gSPDisplayList(gMasterDisp++, D_TI1_7000A80);
+                gSPDisplayList(gMasterDisp++, aTi1Pillar2DL);
             }
             break;
     }

@@ -229,7 +229,7 @@ Gfx* sZoBirdDebrisDLs[] = {
     aZoBirdDebris7DL, aZoBirdDebris8DL, aZoBirdDebris9DL, aZoBirdDebris10DL, aZoBirdDebris11DL,
 };
 
-Gfx* sZGullDebrisDLs[] = { aZoZGullDebris1DL, aZoZGullDebris2DL, aZoZGullDebris3DL };
+Gfx* sZoZGullDebrisDLs[] = { aZoZGullDebris1DL, aZoZGullDebris2DL, aZoZGullDebris3DL };
 
 Gfx* sZoShrimpDebrisDLs[] = { aZoShrimpDebris1DL, aZoShrimpDebris2DL, aZoShrimpDebris3DL, aZoShrimpDebris4DL,
                               aZoShrimpDebris5DL };
@@ -358,22 +358,22 @@ void ActorDebris_Draw(ActorDebris* this) {
             }
             break;
 
-        case ACTORDEBRIS_41:
+        case ACTORDEBRIS_ZO_BIRD:
             Graphics_SetScaleMtx(this->scale);
             gSPDisplayList(gMasterDisp++, sZoBirdDebrisDLs[this->work_048]);
             break;
 
-        case ACTORDEBRIS_42:
+        case ACTORDEBRIS_ZO_ZGULL:
             Graphics_SetScaleMtx(this->scale);
-            gSPDisplayList(gMasterDisp++, sZGullDebrisDLs[this->work_048]);
+            gSPDisplayList(gMasterDisp++, sZoZGullDebrisDLs[this->work_048]);
             break;
 
-        case ACTORDEBRIS_43:
+        case ACTORDEBRIS_ZO_SHRIMP:
             Graphics_SetScaleMtx(this->scale);
             gSPDisplayList(gMasterDisp++, sZoShrimpDebrisDLs[this->work_048]);
             break;
 
-        case ACTORDEBRIS_44:
+        case ACTORDEBRIS_ZO_TROIKA:
             Graphics_SetScaleMtx(this->scale);
             gSPDisplayList(gMasterDisp++, sZoTroikaDebrisDLs[this->work_048]);
             break;
@@ -382,16 +382,16 @@ void ActorDebris_Draw(ActorDebris* this) {
             gSPDisplayList(gMasterDisp++, aPlanetArwingAllRangeDL);
             break;
 
-        case ACTORDEBRIS_46:
+        case ACTORDEBRIS_TI_RASCO:
             if ((this->work_048 == 2) || (this->work_048 == 3) || (this->work_048 == 4)) {
                 RCP_SetupDL(&gMasterDisp, SETUPDL_33);
             }
             gSPClearGeometryMode(gMasterDisp++, G_CULL_BACK);
-            gSPDisplayList(gMasterDisp++, D_TI_801B7584[this->work_048]);
+            gSPDisplayList(gMasterDisp++, gTiRascoDebrisDLs[this->work_048]);
             break;
 
         case ACTORDEBRIS_47:
-            gSPDisplayList(gMasterDisp++, D_TI_801B7608[this->work_048]);
+            gSPDisplayList(gMasterDisp++, gTiDesertCrawlerDebrisDLs[this->work_048]);
             break;
 
         case ACTORDEBRIS_48:

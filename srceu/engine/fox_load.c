@@ -52,7 +52,7 @@ void func_80059428(void) {
 /*
 void Load_SetTextLanguage(void) {
     if (gStopTasks != 1) {
-        switch (D_8017AACB) {
+        switch (gTextLanguage) {
         case 0:
             Load_RomFile(&ast_radio_en_ROM_START, &D_fr_8017B230,(u32) &ast_radio_fr_ROM_START -
 (u32)&ast_radio_en_ROM_START); break; case 1: Load_RomFile(&ast_radio_fr_ROM_START, &D_fr_8017B230,

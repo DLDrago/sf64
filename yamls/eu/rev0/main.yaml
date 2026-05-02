@@ -186,7 +186,7 @@
       - [0xC7080, data, audio/audio_effects]
       - [0xC70A0, data, audio/audio_seqplayer]
       - [0xC7460, data, audio/audio_general]
-      - [0xC8C60, data, audio/audio_context]
+      - [0xC8C60, .data, audio/audio_context]
       - [0xC93E0, data, audio/audio_thread]
       - [0xC9410, data, libc_sprintf]
 

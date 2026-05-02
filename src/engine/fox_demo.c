@@ -1963,6 +1963,8 @@ void Cutscene_CoTeamFormAlongPlayer2(ActorCutscene* this) {
             break;
 
         case 30:
+            // Titania_LevelComplete: Handles ActorTeamArwings
+            // Circle around player Landmaster
             this->fwork[3] += D_demo_800CA098[this->index];
 
             Matrix_RotateY(gCalcMatrix, this->fwork[3] * M_DTOR, MTXF_NEW);
@@ -1984,11 +1986,12 @@ void Cutscene_CoTeamFormAlongPlayer2(ActorCutscene* this) {
             break;
 
         case 31:
+            // Titania_LevelComplete: Handles ActorTeamArwings
+            // Accelerate to catch up great fox
             AUDIO_PLAY_SFX(NA_SE_ARWING_BOOST, this->sfxSource, 0);
             this->state++;
             this->fwork[29] = 5.0f;
             /* fallthrough */
-
         case 32:
             this->iwork[ACTOR_ENGINE_GLOW] = 2;
             Math_SmoothStepToF(&this->obj.rot.x, -20.0f, 0.1f, 0.5f, 0.0f);

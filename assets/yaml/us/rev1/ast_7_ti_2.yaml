@@ -13,64 +13,66 @@
     - "assets/yaml/us/rev1/ast_8_ti.yaml"
     - "assets/yaml/us/rev1/ast_9_ti.yaml"
 
-D_TI2_7003EE8:
-  { type: SF64:ANIM, offset: 0x7003EE8, symbol: D_TI2_7003EE8 }
+aTiGorasAnim9:
+  { type: SF64:ANIM, offset: 0x7003EE8, symbol: aTiGorasAnim9 }
 
-D_TI2_7003F00:
-  { type: GFX, offset: 0x7003F00, symbol: D_TI2_7003F00 }
+aTiGorasSkelLimb34DL:
+  { type: GFX, offset: 0x7003F00, symbol: aTiGorasSkelLimb34DL }
 
-D_TI2_7004270:
-  { type: GFX, offset: 0x7004270, symbol: D_TI2_7004270 }
+aTiGorasSkelLimb90DL:
+  { type: GFX, offset: 0x7004270, symbol: aTiGorasSkelLimb90DL }
 
-D_TI2_7004400:
-  { type: GFX, offset: 0x7004400, symbol: D_TI2_7004400 }
+aTiGorasSkelLimb85DL:
+  { type: GFX, offset: 0x7004400, symbol: aTiGorasSkelLimb85DL }
 
-D_TI2_70045D0:
-  { type: GFX, offset: 0x70045D0, symbol: D_TI2_70045D0 }
+aTiGorasSkelLimb3DL:
+  { type: GFX, offset: 0x70045D0, symbol: aTiGorasSkelLimb3DL }
 
-D_TI2_70047B0:
-  { type: TEXTURE, ctype: u8, format: CI8, height: 16, width: 16, offset: 0x70047B0, symbol: D_TI2_70047B0 }
-D_TI2_70048B0:
-  { type: TEXTURE, ctype: u16, format: TLUT, colors: 136, offset: 0x70048B0, symbol: D_TI2_70048B0 }
+aTiGorasTex1:
+  { type: TEXTURE, ctype: u8, format: CI8, height: 16, width: 16, offset: 0x70047B0, symbol: aTiGorasTex1 }
 
-D_TI2_70049C0:
-  { type: GFX, offset: 0x70049C0, symbol: D_TI2_70049C0 }
+aTiGorasTex1TLUT:
+  { type: TEXTURE, ctype: u16, format: TLUT, colors: 136, offset: 0x70048B0, symbol: aTiGorasTex1TLUT }
 
-D_TI2_7004AB0:
-  { type: TEXTURE, ctype: u8, format: CI8, width: 32, height: 16, offset: 0x7004AB0, symbol: D_TI2_7004AB0 }
-D_TI2_7004CB0:
-  { type: TEXTURE, ctype: u16, format: TLUT, colors: 232 , offset: 0x7004CB0, symbol: D_TI2_7004CB0 }
+aTiGorasSkelLimb56DL:
+  { type: GFX, offset: 0x70049C0, symbol: aTiGorasSkelLimb56DL }
 
-D_TI2_7004E80:
-  { type: GFX, offset: 0x7004E80, symbol: D_TI2_7004E80 }
+aTiGorasTex2:
+  { type: TEXTURE, ctype: u8, format: CI8, width: 32, height: 16, offset: 0x7004AB0, symbol: aTiGorasTex2 }
 
-D_TI2_7005300:
-  { type: GFX, offset: 0x7005300, symbol: D_TI2_7005300 }
+aTiGorasTex2TLUT:
+  { type: TEXTURE, ctype: u16, format: TLUT, colors: 232 , offset: 0x7004CB0, symbol: aTiGorasTex2TLUT }
 
-D_TI2_70054C0:
-  { type: TEXTURE, ctype: u8, format: IA8, width: 8, height: 8, offset: 0x70054C0, symbol: D_TI2_70054C0 }
+aTi2GorasSkelLimb7DL:
+  { type: GFX, offset: 0x7004E80, symbol: aTi2GorasSkelLimb7DL }
 
-D_TI2_70084CC:
-  { type: SF64:ANIM, offset: 0x70084CC, symbol: D_TI2_70084CC }
+aTiGorasLaserChargeDL:
+  { type: GFX, offset: 0x7005300, symbol: aTiGorasLaserChargeDL }
 
-D_TI2_70096EC:
-  { type: SF64:ANIM, offset: 0x70096EC, symbol: D_TI2_70096EC }
+aTiGorasLaserChargeTex:
+  { type: TEXTURE, ctype: u8, format: IA8, width: 8, height: 8, offset: 0x70054C0, symbol: aTiGorasLaserChargeTex }
 
-D_TI2_7009700:
-  { type: GFX, offset: 0x7009700, symbol: D_TI2_7009700 }
+aTiGorasAnim6:
+  { type: SF64:ANIM, offset: 0x70084CC, symbol: aTiGorasAnim6 }
 
-D_TI2_7009890:
-  { type: GFX, offset: 0x7009890, symbol: D_TI2_7009890 }
+aTiGorasAnim7:
+  { type: SF64:ANIM, offset: 0x70096EC, symbol: aTiGorasAnim7 }
 
-D_TI2_7009A80:
-  { type: GFX, offset: 0x7009A80, symbol: D_TI2_7009A80 }
+aTiGorasSkelLimb27DL:
+  { type: GFX, offset: 0x7009700, symbol: aTiGorasSkelLimb27DL }
 
-D_TI2_7009B48:
-  { type: TEXTURE, ctype: u8, format: CI8, width: 16, height: 32, offset: 0x7009B48, symbol: D_TI2_7009B48 }
-D_TI2_7009D48:
-  { type: TEXTURE, ctype: u16, format: TLUT, colors: 56, offset: 0x7009D48, symbol: D_TI2_7009D48 }
+aTiGorasSkelLimb86DL:
+  { type: GFX, offset: 0x7009890, symbol: aTiGorasSkelLimb86DL }
 
-D_TI2_700E244:
-  { type: SF64:ANIM, offset: 0x700E244, symbol: D_TI2_700E244 }
+aTi2Effect394DL:
+  { type: GFX, offset: 0x7009A80, symbol: aTi2Effect394DL }
+
+aTi2Effect394Tex:
+  { type: TEXTURE, ctype: u8, format: CI8, width: 16, height: 32, offset: 0x7009B48, symbol: aTi2Effect394Tex }
+aTi2Effect394TexTLUT:
+  { type: TEXTURE, ctype: u16, format: TLUT, colors: 56, offset: 0x7009D48, symbol: aTi2Effect394TexTLUT }
+
+aTiGorasAnim8:
+  { type: SF64:ANIM, offset: 0x700E244, symbol: aTiGorasAnim8 }
 
 # size = 0xE250

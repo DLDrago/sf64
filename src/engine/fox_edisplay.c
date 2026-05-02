@@ -342,7 +342,7 @@ void ActorDebris_Draw(ActorDebris* this) {
             }
 
             if (gCurrentLevel != LEVEL_SOLAR) {
-                gSPDisplayList(gMasterDisp++, D_TI_801B769C[this->work_046]);
+                gSPDisplayList(gMasterDisp++, gTiGorasDebrisDLs[this->work_046]);
             } else {
                 if (gBosses[0].fwork[3] < 4800.0f) {
                     RCP_SetupDL(&gMasterDisp, SETUPDL_30);

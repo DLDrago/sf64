@@ -1,6 +1,11 @@
 #include "global.h"
 
-Vec3f D_i5_801B72A0[] = { 500.0f, -700.0f, 200.0f, -500.0f, -700.0f, 200.0f };
+Vec3f sTiLevelStartTeamPos[] = {
+    // Falco
+    { 500.0f, -700.0f, 200.0f },
+    // Peppy
+    { -500.0f, -700.0f, 200.0f }
+};
 Vec3f D_i5_801B72B8[] = { 40.0f,  10.0f, 30.0f, 41.0f,  10.0f, 10.0f, 43.0f,  10.0f, -10.0f, 45.0f,  10.0f, -30.0f,
                           -40.0f, 10.0f, 30.0f, -41.0f, 10.0f, 10.0f, -43.0f, 10.0f, -10.0f, -45.0f, 10.0f, -30.0f };
 f32 D_i5_801B7318[] = { 1000.0f, -1000.0f, 0.0f, 0.0f };
@@ -23,14 +28,14 @@ void Titania_80187530(ActorCutscene* this) {
     this->animFrame = ACTOR_CS_GREAT_FOX;
 }
 
-void Titania_801875D0(ActorCutscene* this, s32 arg1) {
+void Titania_LevelStart_SpawnTeam(ActorCutscene* this, s32 teamIdx) {
     Actor_Initialize(this);
     this->obj.status = OBJ_INIT;
     this->obj.id = OBJ_ACTOR_CUTSCENE;
 
-    this->obj.pos.x = D_i5_801B72A0[arg1].x;
-    this->obj.pos.y = D_i5_801B72A0[arg1].y + 3000.0f;
-    this->obj.pos.z = D_i5_801B72A0[arg1].z;
+    this->obj.pos.x = sTiLevelStartTeamPos[teamIdx].x;
+    this->obj.pos.y = sTiLevelStartTeamPos[teamIdx].y + 3000.0f;
+    this->obj.pos.z = sTiLevelStartTeamPos[teamIdx].z;
 
     this->obj.rot.y = 180.0f;
     this->iwork[11] = 1;
@@ -55,11 +60,11 @@ void Titania_LevelStart(Player* player) {
             Titania_80187530(&gActors[3]);
 
             if (gTeamShields[TEAM_ID_FALCO] > 0) {
-                Titania_801875D0(&gActors[10], 0);
+                Titania_LevelStart_SpawnTeam(&gActors[10], 0);
             }
 
             if (gTeamShields[TEAM_ID_PEPPY] > 0) {
-                Titania_801875D0(&gActors[11], 1);
+                Titania_LevelStart_SpawnTeam(&gActors[11], 1);
             }
 
             player->pos.x = actor->obj.pos.x;
@@ -247,13 +252,13 @@ void Titania_LevelStart(Player* player) {
     Math_SmoothStepToF(&player->cam.at.z, gCsCamAtZ, D_ctx_80177A48[0], sp64, 0.00f);
 }
 
-void Titania_80188108(Actor* this, s32 index) {
+void Titania_LevelComplete_SpawnTeam(ActorCutscene* this, s32 teamIdx) {
     Player* player = &gPlayer[0];
 
     Actor_Initialize(this);
-    this->obj.pos.x = D_i5_801B7318[index] + player->pos.x;
-    this->obj.pos.y = D_i5_801B7328[index] + player->pos.y;
-    this->obj.pos.z = D_i5_801B7338[index] + player->pos.z;
+    this->obj.pos.x = D_i5_801B7318[teamIdx] + player->pos.x;
+    this->obj.pos.y = D_i5_801B7328[teamIdx] + player->pos.y;
+    this->obj.pos.z = D_i5_801B7338[teamIdx] + player->pos.z;
 
     this->fwork[7] = RAND_FLOAT(360.0f);
     this->fwork[8] = RAND_FLOAT(360.0f);
@@ -268,11 +273,11 @@ void Titania_80188108(Actor* this, s32 index) {
 
     Object_SetInfo(&this->info, this->obj.id);
 
-    if (index < 3) {
+    if (teamIdx < 3) {
         this->iwork[11] = 1;
         this->drawShadow = true;
-        this->fwork[3] = D_i5_801B7348[index];
-        this->state = 30;
+        this->fwork[3] = D_i5_801B7348[teamIdx];
+        this->state = 30; // Behaviour updates in Cutscene_CoTeamFormAlongPlayer2
         AUDIO_PLAY_SFX(NA_SE_ARWING_ENGINE_FG, this->sfxSource, 4);
     } else {
         this->animFrame = ACTOR_CS_GREAT_FOX;
@@ -304,13 +309,13 @@ void Titania_LevelComplete(Player* player) {
 
             player->gravity = 3.0f;
 
-            Titania_80188108(&gActors[0], 0);
+            Titania_LevelComplete_SpawnTeam(&gActors[0], 0);
 
             if (gTeamShields[TEAM_ID_FALCO] > 0) {
-                Titania_80188108(&gActors[1], 1);
+                Titania_LevelComplete_SpawnTeam(&gActors[1], 1);
             }
             if (gTeamShields[TEAM_ID_PEPPY] > 0) {
-                Titania_80188108(&gActors[2], 2);
+                Titania_LevelComplete_SpawnTeam(&gActors[2], 2);
             }
 
             Audio_KillSfxBySourceAndId(player->sfxSource, NA_SE_TANK_BURNER_HALF);
@@ -495,7 +500,7 @@ void Titania_LevelComplete(Player* player) {
             D_ctx_80177A48[0] = 0.0f;
             player->vel.z = 0.0f;
             player->vel.y = 0.0f;
-            Titania_80188108(&gActors[3], 3);
+            Titania_LevelComplete_SpawnTeam(&gActors[3], 3);
             gProjectFar = 30000.0f;
             player->hideShadow = true;
             Audio_StopPlayerNoise(0);

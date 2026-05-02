@@ -3233,7 +3233,7 @@ void Effect_Effect394_Draw(Effect394* this) {
             gDPSetPrimColor(gMasterDisp++, 0, 0, 255, 255, 255, this->unk_48);
             Matrix_Scale(gGfxMatrix, 1.0f, 1.0f, this->scale2, MTXF_APPLY);
             Matrix_SetGfxMtx(&gMasterDisp);
-            gSPDisplayList(gMasterDisp++, D_TI_A000000);
+            gSPDisplayList(gMasterDisp++, aTiEffect394DL);
             RCP_SetupDL(&gMasterDisp, SETUPDL_64);
             break;
 

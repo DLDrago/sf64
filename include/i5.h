@@ -10,7 +10,7 @@
 
 extern Gfx* gTiRascoDebrisDLs[];
 extern Gfx* gTiDesertCrawlerDebrisDLs[];
-extern Gfx* D_TI_801B769C[];
+extern Gfx* gTiGorasDebrisDLs[];
 extern f32 aTiGorasHitbox[];
 extern u8 D_MA_801BA1E8;
 extern f32 D_MA_801BE250[40];

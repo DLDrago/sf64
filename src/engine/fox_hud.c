@@ -5594,7 +5594,7 @@ void Aquas_AqBump2_Setup(ActorCutscene* this, s32 posIdx) {
     this->obj.id = OBJ_ACTOR_CUTSCENE;
     this->obj.pos = sAqBump2Pos[posIdx];
     this->obj.pos.z -= gPathProgress;
-    this->animFrame = 45;
+    this->animFrame = ACTOR_CS_AQ_BUMP_2;
     Object_SetInfo(&this->info, this->obj.id);
 }
 

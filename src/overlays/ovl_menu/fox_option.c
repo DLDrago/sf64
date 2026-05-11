@@ -365,16 +365,6 @@ void Option_Setup(void) {
     bool playedExpertMode;
     s32 i;
 
-#if MODS_LEVEL_SELECT == 1
-    for (i = 0; i < ARRAY_COUNT(gSaveFile.save.data.planet); i++) {
-        gSaveFile.save.data.planet[i].expertClear = 1;
-        gSaveFile.save.data.planet[i].normalClear = 1;
-        gSaveFile.save.data.planet[i].normalMedal = 1;
-        gSaveFile.save.data.planet[i].expertMedal = 1;
-        gSaveFile.save.data.planet[i].played = 1;
-    }
-    Save_Write();
-#endif
     gVIsPerFrame = 2;
 
     sOptionCardList[OPTION_MAP].tex.texture = aMainGameCardTex;
@@ -395,13 +385,7 @@ void Option_Setup(void) {
             continue;
         }
         if (!(gSaveFile.save.data.planet[i].normalMedal & 1)) {
-#if MODS_LEVEL_SELECT == 1
-            enableExpertModes = true;
-#elif MODS_SFX_JUKEBOX == 1
-            enableExpertModes = true;
-#else
             enableExpertModes = false;
-#endif
             break;
         }
     }
@@ -545,16 +529,24 @@ void Option_Setup(void) {
     sMainMenuFromCancel = false;
     sVsSubMenuFromCancel = false;
     AUDIO_PLAY_BGM(NA_BGM_SELECT);
+
+#if MODS_LEVEL_SELECT == 1 || MODS_SFX_JUKEBOX == 1
+    sExpertModesEnabled = true;
+#endif
+
+#if MODS_FULL_SAVE == 1
+    for (i = 0; i < ARRAY_COUNT(gSaveFile.save.data.planet); i++) {
+        gSaveFile.save.data.planet[i].expertClear = 1;
+        gSaveFile.save.data.planet[i].normalClear = 1;
+        gSaveFile.save.data.planet[i].normalMedal = 1;
+        gSaveFile.save.data.planet[i].expertMedal = 1;
+        gSaveFile.save.data.planet[i].played = 1;
+    }
+    Save_Write();
+#endif
 }
 
 void Option_Main(void) {
-#if 0 // Docs debug
-    {
-        RCP_SetupDL(&gMasterDisp, SETUPDL_83);
-        gDPSetPrimColor(gMasterDisp++, 0, 0, 255, 255, 0, 255);
-        Graphics_DisplaySmallNumber(80, 220, sVsSubMenuFromCancel);
-    }
-#endif
     if (D_menu_801B9178 > 0) {
         D_menu_801B9178--;
     }

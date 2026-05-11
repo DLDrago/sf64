@@ -20,6 +20,12 @@
 #define MODS_LEVEL_SELECT 0
 
 /**
+ * Full Save:
+ * Get a full save.
+ */
+#define MODS_FULL_SAVE 0
+
+/**
  * Sound Effects Jukebox:
  * Ability to play sound effects inside the expert sound menu
  * Use L to switch between jukebox and soundtrack

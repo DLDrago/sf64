@@ -434,8 +434,8 @@ void* AudioLoad_SyncLoadSampleBank(u32 sampleBankId, s32* outMedium) {
     sampleBankId = AudioLoad_GetLoadTableIndex(SAMPLE_TABLE, sampleBankId);
     ramAddr = AudioLoad_SearchCaches(SAMPLE_TABLE, sampleBankId);
     if (ramAddr != NULL) {
-        if (gSampleFontLoadStatus[sampleBankId] != 5) {
-            gSampleFontLoadStatus[sampleBankId] = 2;
+        if (gSampleFontLoadStatus[sampleBankId] != LOAD_STATUS_PERMANENT) {
+            gSampleFontLoadStatus[sampleBankId] = LOAD_STATUS_COMPLETE;
         }
         *outMedium = MEDIUM_RAM;
         return ramAddr;
@@ -719,7 +719,7 @@ void AudioLoad_SyncDmaDisk(u32 devAddr, u8* ramAddr, size_t size, s32 diskParam)
     s32 addr = devAddr;
 
     osInvalDCache(ramAddr, size);
-    func_8000FC8C(AudioLoad_OffsetToLbaOffset(diskParam, &addr), addr, ramAddr, size);
+    AudioLoad_DmaDisk(AudioLoad_OffsetToLbaOffset(diskParam, &addr), addr, ramAddr, size);
 }
 
 // Original name: Nas_StartDma
@@ -762,7 +762,7 @@ s32 AudioLoad_OffsetToLbaOffset(u32 diskParam, u32* addrPtr) {
     return 0;
 }
 
-void func_8000FC8C(s32 lbaOffset, u32 addr, u8* ramAddr, u32 size) {
+void AudioLoad_DmaDisk(s32 lbaOffset, u32 addr, u8* ramAddr, u32 size) {
 }
 
 // Original name: EmemLoad
@@ -1160,7 +1160,7 @@ void AudioLoad_DmaSlowCopyDisk(u32 devAddr, u8* ramAddr, size_t size, s32 diskPa
     s32 addr = devAddr;
 
     osInvalDCache(ramAddr, size);
-    func_8000FC8C(AudioLoad_OffsetToLbaOffset(diskParam, &addr), addr, ramAddr, size);
+    AudioLoad_DmaDisk(AudioLoad_OffsetToLbaOffset(diskParam, &addr), addr, ramAddr, size);
 }
 
 // Original name: Nas_BgCopyReq
@@ -1328,7 +1328,7 @@ void AudioLoad_AsyncDmaDisk(u32 devAddr, u8* ramAddr, size_t size, s32 diskParam
     s32 addr = devAddr;
 
     osInvalDCache(ramAddr, size);
-    func_8000FC8C(AudioLoad_OffsetToLbaOffset(diskParam, &addr), addr, ramAddr, size);
+    AudioLoad_DmaDisk(AudioLoad_OffsetToLbaOffset(diskParam, &addr), addr, ramAddr, size);
 }
 
 // Original name: __WaveTouch

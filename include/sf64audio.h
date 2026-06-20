@@ -1119,7 +1119,7 @@ void AudioLoad_SyncDmaDisk(u32 devAddr, u8* ramAddr, size_t size, s32 diskParam)
 s32 AudioLoad_Dma(OSIoMesg* mesg, u32 priority, s32 direction, u32 devAddr, void* ramAddr, size_t size,
                   OSMesgQueue* retQueue, s32 medium, const char* dmaType);
 s32 AudioLoad_OffsetToLbaOffset(u32 diskParam, u32* addrPtr);
-void func_8000FC8C(s32 unkParam2, u32 addr, u8* ramAddr, u32 size);
+void AudioLoad_DmaDisk(s32 unkParam2, u32 addr, u8* ramAddr, u32 size);
 void* AudioLoad_AsyncLoadInner(AudioTableType tableType, s32 id, s32 nChunks, s32 retData, OSMesgQueue* retQueue);
 Sample* AudioLoad_GetFontSample(s32 fontId, s32 instId);
 void AudioLoad_ProcessSlowLoads(s32 resetStatus);

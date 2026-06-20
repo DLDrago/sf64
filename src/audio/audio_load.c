@@ -341,8 +341,8 @@ void AudioLoad_DiscardSeqFonts(s32 seqId) {
         fontId = AudioLoad_GetLoadTableIndex(FONT_TABLE, gSeqFontTable[index++]);
         if (AudioHeap_SearchPermanentCache(FONT_TABLE, fontId) == NULL) {
             AudioLoad_DiscardFont(fontId);
-            if (gFontLoadStatus[fontId] != 5) {
-                gFontLoadStatus[fontId] = 0;
+            if (gFontLoadStatus[fontId] != LOAD_STATUS_PERMANENT) {
+                gFontLoadStatus[fontId] = LOAD_STATUS_NOT_LOADED;
                 if (1) {}
             }
         }

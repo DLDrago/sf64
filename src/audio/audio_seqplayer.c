@@ -1260,8 +1260,8 @@ void AudioSeq_SequencePlayerProcessSequence(SequencePlayer* seqPlayer) {
         return;
     }
 
-    if (((gSeqLoadStatus[seqPlayer->seqId] < 2) != 0) ||
-        ((seqPlayer->defaultFont != 0xFF) && ((gFontLoadStatus[seqPlayer->defaultFont] < 2) != 0))) {
+    if (((gSeqLoadStatus[seqPlayer->seqId] < LOAD_STATUS_COMPLETE) != 0) ||
+        ((seqPlayer->defaultFont != 0xFF) && ((gFontLoadStatus[seqPlayer->defaultFont] < LOAD_STATUS_COMPLETE) != 0))) {
         AudioSeq_SequencePlayerDisable(seqPlayer);
         return;
     }
